@@ -43,21 +43,49 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 05
 function retornaQuantidadeElementos(array) {
-  
+  return array.length
 }
 
 // EXERCÍCIO 06
 function retornaExpressoesBooleanas() {
+  const booleano1 = true
+  const booleano2 = false
+  const booleano3 = !booleano2
+  const booleano4 = !booleano3
 
+  const expressaoA = booleano1 && booleano2 && !booleano4
+  const expressaoB = (booleano1 && booleano2) || !booleano3
+  const expressaoC = (booleano2 || booleano3) && (booleano4 || booleano1)
+  const expressaoD = !(booleano2 && booleano3) || !(booleano1 && booleano3)
+  const expressaoE = !(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3)
+
+  const respostas = [expressaoA, expressaoB, expressaoC, expressaoD, expressaoE]
+
+  return respostas
 }
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
+  let arrayDeNumeros = []
 
+  for (let numero = 0; arrayDeNumeros.length < n; numero++){
+      if (numero % 2 === 0) {
+        arrayDeNumeros.push(numero)
+    }
+  } 
+  return arrayDeNumeros
 }
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
+  if (a === b && a === c && b === c){
+    return "Equilátero"
+  } else if (a === b || a === c || b === c) {
+    return "Isósceles"
+  } else {
+    return "Escaleno"
+  }
+
   // return 'Escaleno'
   // return 'Equilátero'
   // return 'Isósceles'
@@ -65,6 +93,30 @@ function checaTriangulo(a, b, c) {
 
 // EXERCÍCIO 09
 function comparaDoisNumeros(num1, num2) {
+  let maior
+  let menor
+
+  if (num1 > num2) {
+    maior = num1
+    menor = num2
+  } else {
+    menor = num1
+    maior = num2
+  }
+
+  let resultadoDivisao = (maior % menor) === 0
+
+  let resultadoSubtracao = (maior - menor)
+
+  let objeto = 
+  {
+    maiorNumero: maior,
+    maiorDivisivelPorMenor: resultadoDivisao,
+    diferenca: resultadoSubtracao
+  }
+
+  return objeto
+
   // Formato do objeto a ser retornado:
   // {
   //   maiorNumero: X,
