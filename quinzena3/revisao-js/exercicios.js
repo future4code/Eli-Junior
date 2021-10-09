@@ -108,8 +108,7 @@ function comparaDoisNumeros(num1, num2) {
 
   let resultadoSubtracao = (maior - menor)
 
-  let objeto = 
-  {
+  let objeto = {
     maiorNumero: maior,
     maiorDivisivelPorMenor: resultadoDivisao,
     diferenca: resultadoSubtracao
@@ -137,22 +136,45 @@ function ordenaArray(array) {
 
 // EXERCÍCIO 12
 function filmeFavorito() {
-
+  const filme = {
+    nome: "O Diabo Veste Prada",
+    ano: 2006,
+    diretor: "David Frankel",
+    atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
+  }
+  return filme
 }
 
 // EXERCÍCIO 13
 function imprimeChamada() {
+  const filme = {
+    nome: "O Diabo Veste Prada",
+    ano: 2006,
+    diretor: "David Frankel",
+    atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
+  }
+  return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`
   // "Venha assistir ao filme NOME_DO_FILME, de ANO, dirigido por DIRECAO e estrelado por ELENCO."
 }
 
 // EXERCÍCIO 14
 function criaRetangulo(lado1, lado2) {
-
+  const formarRetangulo = {
+    largura: lado1,
+    altura: lado2,
+    perimetro: 2 * (lado1 + lado2),
+    area: lado1 * lado2
+  }
+  return formarRetangulo
 }
 
 // EXERCÍCIO 15
 function anonimizaPessoa(pessoa) {
-
+    const novaPessoa = {
+    ...pessoa,
+    nome: "ANÔNIMO"
+  }
+  return novaPessoa
 }
 
 // EXERCÍCIO 16A
