@@ -92,7 +92,11 @@ div>p:first-child {
   *
   **/
 
-div:nth-child(2),
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+  div:nth-child(2),
 div:last-child {
     text-align: center;
 }
