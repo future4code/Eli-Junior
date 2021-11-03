@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.titulo-pag-principal {
+    display: flex;
+    align-items: center;
+}
+
+header {
+    background-color: coral;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    margin: 12px;
+    border: 1px solid #000;
+}
+
+.imagem-card {
+}
+
+footer {
+    background-color: darkslategray;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
