@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.menu {
+    background-color: #f2d0e0;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    float: left;
+}
+
+.galeria-bolos {
+    display: grid;
+    width: 80%;
+    float: right;
+}
+
+header, footer {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    background-color: mediumvioletred;
+}
