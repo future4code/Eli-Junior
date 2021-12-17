@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 export default class TelaCadastro extends React.Component {
     state = {
@@ -15,7 +16,25 @@ export default class TelaCadastro extends React.Component {
     }
 
     fazerCadastro = () => {
-        console.log(this.state)
+        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"
+        const body = {
+            name: this.state.nome,
+            email: this.state.email
+        }
+
+        axios.post(url, body, {
+            headers: {
+                Authorization: "eli-junior-joy"
+            }
+        })
+        .then((response) => {
+            alert("Usuário(a) cadastrado(a) com sucesso!")
+            this.setState({nome: "", email: ""})
+        })
+        .catch((error) => {
+
+            alert(error.response.data.message)
+        })
     }
 
     render() {
