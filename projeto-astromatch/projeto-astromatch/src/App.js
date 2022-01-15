@@ -4,10 +4,9 @@ import ChooseMatchPage from './components/ChooseMatchPage';
 import Header from './components/Header';
 
 const TelaPrincipal = styled.div`
-  width: 50vw;
+  width: 600px;
   height: 90vh;
   margin: auto;
-  margin-top: 60px;
   border-radius: 10px;
   border: 1px solid black;
 `

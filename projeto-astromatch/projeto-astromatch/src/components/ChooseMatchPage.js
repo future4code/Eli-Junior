@@ -5,7 +5,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import axios from 'axios';
 
 const Image = styled.img`
-    width: 60%;
+    width: 300px;
 `
 
 const Body = styled.div`
@@ -63,7 +63,7 @@ const ChooseMatchPage = () => {
             <FooterBotoes>
                 <ClearIcon onClick={getProfileToChoose} sx={{ fontSize: 50, color: 'red', cursor: 'pointer' }} />
                 <FavoriteIcon onClick={() => choosePerson(profile.id) } sx={{ fontSize: 50, color: 'green', cursor: 'pointer' }} />
-        </FooterBotoes>
+            </FooterBotoes>
         </Body>
     )
 }

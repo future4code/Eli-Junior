@@ -7,6 +7,7 @@ const HeaderPage = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 5px;
+  margin: 10px 20px;
 `
 
 const Image = styled.img`
