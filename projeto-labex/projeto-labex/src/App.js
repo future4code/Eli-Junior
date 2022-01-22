@@ -1,6 +1,5 @@
 
 import React from 'react';
-import VerViagens from './components/VerViagens/VerViagens';
 
 export default class App extends React.Component {
   render() {
