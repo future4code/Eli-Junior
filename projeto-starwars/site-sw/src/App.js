@@ -1,26 +1,36 @@
 import React, {useState} from "react";
+import styled from "styled-components";
 import CharacterDetailPage from "./components/CharacterDetailPage/CharacterDetailPage";
 import CharacterListPage from "./components/CharacterListPage/CharacterListPage";
+import PageHeader from "./components/PageHeader/PageHeader";
 
-function App() {
+const AppContainer = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+`
+
+function App(props) {
   const [tela, setTela] = useState('pagina-lista');
 
   function escolheTela() {
     switch (tela) {
       case 'pagina-lista':
-        return <CharacterListPage />
+        return <CharacterListPage trocaTela={trocaTela}/>
       case 'pagina-detalhes':
-        return <CharacterDetailPage />
+        return <CharacterDetailPage trocaTela={trocaTela}/>
       default:
-        break;
+        return null
     }
   }
 
+  const trocaTela = (tela) => {
+    setTela(tela)
+  }
+
   return (
-    <div>
-      <h1>Star Wars</h1>
-      {escolheTela()}
-    </div>
+    <AppContainer>
+      <PageHeader/>
+      {escolheTela()} 
+    </AppContainer>
   );
 }
 

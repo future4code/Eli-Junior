@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-function CharacterListPage() {
-  const [characterList, setCharacterList] = useState([]);
+function CharacterListPage(props) {
+  const [getCharacterList, setGetCharacterList] = useState([]);
 
-  const renderCharacterList = () => {
-    switch (key) {
-      case value:
-        
-        break;
-    
-      default:
-        break;
-    }
-  } 
+  useEffect(() => {
+    axios.get('https://swapi.py4e.com/api/people/1/')
+    .then(response => {
+      console.log(response.getCharacterList)
+    })
+  }, []);
 
   return (
     <div>
       <h3>CharacterListPage</h3>
+      <button onClick={() => props.trocaTela('pagina-detalhes')}>Ir para detalhes</button>
     </div>
   );
 }
