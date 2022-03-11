@@ -2,10 +2,10 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import CharacterDetailPage from "./components/CharacterDetailPage/CharacterDetailPage";
 import CharacterListPage from "./components/CharacterListPage/CharacterListPage";
-import PageHeader from "./components/PageHeader/PageHeader";
 
 const AppContainer = styled.div`
   font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
 `
 
 function App(props) {
@@ -28,7 +28,6 @@ function App(props) {
 
   return (
     <AppContainer>
-      <PageHeader/>
       {escolheTela()} 
     </AppContainer>
   );
