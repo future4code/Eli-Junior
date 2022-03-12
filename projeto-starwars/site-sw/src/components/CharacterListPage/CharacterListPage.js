@@ -10,7 +10,11 @@ const ContainerList = styled.div`
   padding-left: 10px;
   font-size: 15px;
   :hover {
-    background-color: gray;
+    background-color: beige;
+    color: red;
+  }
+  :active {
+    background-color: lightgrey;
   }
 `
 
