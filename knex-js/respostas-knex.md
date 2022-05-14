@@ -1,7 +1,9 @@
-import express, { Request, Response } from "express";
-import connection from "./connection";
-import app from "./app";
+<h5>EXERCÍCIO 1</h5>
 
+<p>a) A resposta será a mesma do banco MySQL, pois coloca-se as mesmas informações fornecidas por aquele programa.</p>
+
+<p>b)</p>
+```
 app.get("/actor", async (req: Request, res: Response): Promise<void> => {
     try {
         const result = await connection.raw(`
@@ -13,7 +15,10 @@ app.get("/actor", async (req: Request, res: Response): Promise<void> => {
         res.status(500).send(error.sqlMessage || error.message);
     }
 });
+```
 
+<p>c)</p>
+```
 app.get("/actor", async (req: Request, res: Response): Promise<void> => {
     try {
         const result = await connection.raw(`
@@ -25,7 +30,12 @@ app.get("/actor", async (req: Request, res: Response): Promise<void> => {
         res.status(500).send(error.sqlMessage || error.message);
     }
 });
+```
 
+<h5>EXERCÍCIO 2</h5>
+
+<p>a)</p>
+```
 app.put("/actor/:id", async (req: Request, res: Response): Promise<void> => {
     try {
         await connection("Actor")
@@ -39,4 +49,4 @@ app.put("/actor/:id", async (req: Request, res: Response): Promise<void> => {
         res.status(500).send(error.sqlMessage || error.message);
     }
 });
-
+```
