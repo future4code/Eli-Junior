@@ -1,0 +1,18 @@
+####
+POST http://localhost:3003/users
+Content-Type:application/json
+{
+    "name": "Eli",
+    "email": "eli@labenu.com.br",
+    "password": "gsdlkgjksl"
+}
+
+####
+
+POST http://localhost:3003/products
+Content-Type:application/json
+{
+    "name": "Smartphone Samsung Galaxy M12 64GB 4G Wi-Fi Tela 6.5'' Dual Chip 4GB RAM Câmera Quádrupla + Selfie 8MP - Azul",
+    "price": 989.10,
+    "imageUrl": "https://images-americanas.b2w.io/produtos/01/00/img/3163816/0/3163816071_1SZ.jpg"
+}
