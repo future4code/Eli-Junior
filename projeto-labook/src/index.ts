@@ -1,157 +1,165 @@
-/**************************** IMPORTS ******************************/
+import { app } from "./controller/app";
+import { postRouter } from "./routes/PostRouter";
+import { userRouter } from "./routes/UserRouter";
 
-import express, { Express, Request, Response } from "express"
-import cors from "cors"
-import knex from "knex"
-import dotenv from "dotenv"
-import { v4 } from "uuid"
-import Knex from "knex"
+app.use('/labook', userRouter)
+app.use('/labook', postRouter)
 
-/**************************** CONFIG ******************************/
 
-dotenv.config()
 
-export const connection: Knex = knex({
-   client: "mysql",
-   connection: {
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_SCHEMA,
-      port: 3306,
-      multipleStatements: true
-   }
-})
+// /**************************** IMPORTS ******************************/
 
-const app: Express = express()
-app.use(express.json())
-app.use(cors())
+// import express, { Express, Request, Response } from "express"
+// import cors from "cors"
+// import knex from "knex"
+// import dotenv from "dotenv"
+// import { v4 } from "uuid"
+// import Knex from "knex"
 
-/**************************** TYPES ******************************/
+// /**************************** CONFIG ******************************/
 
-type authenticationData = {
-   id: string
-}
+// dotenv.config()
 
-type user = {
-   id: string,
-   name: string,
-   email: string,
-   password: string
-}
+// export const connection: Knex = knex({
+//    client: "mysql",
+//    connection: {
+//       host: process.env.DB_HOST,
+//       user: process.env.DB_USER,
+//       password: process.env.DB_PASSWORD,
+//       database: process.env.DB_SCHEMA,
+//       port: 3306,
+//       multipleStatements: true
+//    }
+// })
 
-enum POST_TYPES {
-   NORMAL = "normal",
-   EVENT = "event"
-}
+// const app: Express = express()
+// app.use(express.json())
+// app.use(cors())
 
-type post = {
-   id: string,
-   photo: string,
-   description: string,
-   type: POST_TYPES,
-   createdAt: Date,
-   authorId: string
-}
+// /**************************** TYPES ******************************/
 
-/**************************** SERVICES ******************************/
+// type authenticationData = {
+//    id: string
+// }
 
-const generateId = (): string => v4()
+// type user = {
+//    id: string,
+//    name: string,
+//    email: string,
+//    password: string
+// }
 
-/**************************** ENDPOINTS ******************************/
+// enum POST_TYPES {
+//    NORMAL = "normal",
+//    EVENT = "event"
+// }
 
-app.post('/users', async (req: Request, res: Response) => {
-   try {
-      let message = "Success!"
-      const { name, email, password } = req.body
+// type post = {
+//    id: string,
+//    photo: string,
+//    description: string,
+//    type: POST_TYPES,
+//    createdAt: Date,
+//    authorId: string
+// }
 
-      if (!name || !email || !password) {
-         res.statusCode = 406
-         message = '"name", "email" and "password" must be provided'
-         throw new Error(message)
-      }
+// /**************************** SERVICES ******************************/
 
-      const id: string = generateId()
+// const generateId = (): string => v4()
 
-      await connection('labook_users')
-         .insert({
-            id,
-            name,
-            email,
-            password
-         })
+// /**************************** ENDPOINTS ******************************/
 
-      res.status(201).send({ message })
+// app.post('/users', async (req: Request, res: Response) => {
+//    try {
+//       let message = "Success!"
+//       const { name, email, password } = req.body
 
-   } catch (error:any) {
-      res.statusCode = 400
-      let message = error.sqlMessage || error.message
-      res.send({ message })
-   }
-})
+//       if (!name || !email || !password) {
+//          res.statusCode = 406
+//          message = '"name", "email" and "password" must be provided'
+//          throw new Error(message)
+//       }
 
-app.post('/post', async (req: Request, res: Response) => {
-   try {
-      let message = "Success!"
+//       const id: string = generateId()
 
-      const { photo, description, type, authorId } = req.body
+//       await connection('labook_users')
+//          .insert({
+//             id,
+//             name,
+//             email,
+//             password
+//          })
 
-      const postId: string = generateId()
+//       res.status(201).send({ message })
 
-      await connection("labook_posts")
-         .insert({
-            id:postId,
-            photo,
-            description,
-            type,
-            author_id: authorId
-         })
+//    } catch (error:any) {
+//       res.statusCode = 400
+//       let message = error.sqlMessage || error.message
+//       res.send({ message })
+//    }
+// })
 
-      res.status(201).send({ message })
+// app.post('/post', async (req: Request, res: Response) => {
+//    try {
+//       let message = "Success!"
 
-   } catch (error:any) {
-      let message = error.sqlMessage || error.message
-      res.statusCode = 400
-      res.send({ message })
-   }
-})
+//       const { photo, description, type, authorId } = req.body
 
-app.get('/posts/:id', async (req: Request, res: Response) => {
-   try {
-      let message = "Success!"
+//       const postId: string = generateId()
 
-      const { id } = req.params
+//       await connection("labook_posts")
+//          .insert({
+//             id:postId,
+//             photo,
+//             description,
+//             type,
+//             author_id: authorId
+//          })
 
-      const queryResult: any = await connection("labook_posts")
-         .select("*")
-         .where({ id })
+//       res.status(201).send({ message })
 
-      if (!queryResult[0]) {
-         res.statusCode = 404
-         message = "Post not found"
-         throw new Error(message)
-      }
+//    } catch (error:any) {
+//       let message = error.sqlMessage || error.message
+//       res.statusCode = 400
+//       res.send({ message })
+//    }
+// })
 
-      const post: post = {
-         id: queryResult[0].id,
-         photo: queryResult[0].photo,
-         description: queryResult[0].description,
-         type: queryResult[0].type,
-         createdAt: queryResult[0].created_at,
-         authorId: queryResult[0].author_id,
-      }
+// app.get('/posts/:id', async (req: Request, res: Response) => {
+//    try {
+//       let message = "Success!"
 
-      res.status(200).send({ message, post })
+//       const { id } = req.params
 
-   } catch (error:any) {
-      let message = error.sqlMessage || error.message
-      res.statusCode = 400
-      res.send({ message })
-   }
-})
+//       const queryResult: any = await connection("labook_posts")
+//          .select("*")
+//          .where({ id })
 
-/**************************** SERVER INIT ******************************/
+//       if (!queryResult[0]) {
+//          res.statusCode = 404
+//          message = "Post not found"
+//          throw new Error(message)
+//       }
 
-app.listen(3003, () => {
-   console.log("Server running on port 3003")
-})
+//       const post: post = {
+//          id: queryResult[0].id,
+//          photo: queryResult[0].photo,
+//          description: queryResult[0].description,
+//          type: queryResult[0].type,
+//          createdAt: queryResult[0].created_at,
+//          authorId: queryResult[0].author_id,
+//       }
+
+//       res.status(200).send({ message, post })
+
+//    } catch (error:any) {
+//       let message = error.sqlMessage || error.message
+//       res.statusCode = 400
+//       res.send({ message })
+//    }
+// })
+
+// /**************************** SERVER INIT ******************************/
+
+// app.listen(3003, () => {
+//    console.log("Server running on port 3003")

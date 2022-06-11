@@ -1,0 +1,17 @@
+POST http://localhost:3003/labook/user 
+Content-Type: application/json
+
+{
+    "name": "Eli",
+    "email": "eli4@email.com",
+    "password": "gksjgklsjglks" 
+}
+
+###
+
+POST http://localhost:3003/labook/post
+Content-Type: application/json
+
+{
+    
+}
