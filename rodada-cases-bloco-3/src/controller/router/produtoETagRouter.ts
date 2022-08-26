@@ -5,4 +5,4 @@ export const produtoETagRouter = Router()
 
 const produtoETag = new ProdutoETagController()
 
-produtoETagRouter.get("/buscaprodutotag", produtoETag.criarProdutoETagController)
+produtoETagRouter.post("/criarprodutotag", produtoETag.criarProdutoETagController)

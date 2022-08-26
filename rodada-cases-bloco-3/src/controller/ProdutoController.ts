@@ -26,4 +26,15 @@ export class ProdutoController {
             res.send(error.message)
         }
     }
+
+    async getProdutoIdController(req: Request, res: Response) {
+        try {
+            const produto_id = req.params.produto_id
+            const produto = new ProdutoBusiness()
+            const result = await produto.getProdutoBusiness(produto_id)
+            res.status(201).send(result)
+        } catch (error: any) {
+            res.send(error.message)
+        }
+    }
 }

@@ -27,4 +27,17 @@ export class ProdutoBusiness {
             throw new Error(error.message)
         }
     }
+
+    async getProdutoBusiness(produto_id: string) {
+        try {
+            if ( !produto_id ) {
+                throw new Error("Id incorreto ou inválido.")
+            }
+            const produtoData = new ProdutoDatabase()
+            const pegarProduto = await produtoData.getProdutoId(produto_id)
+            return pegarProduto
+        } catch (error: any) {
+            throw new Error(error.message)
+        }
+    }
 }
