@@ -1,0 +1,8 @@
+import styled from "styled-components"
+
+export const MainContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+    min-height:100vh;
+`
